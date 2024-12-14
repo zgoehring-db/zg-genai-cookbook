@@ -30,23 +30,23 @@ user_name = user_email.split("@")[0].replace(".", "").lower()[:35]
 # COMMAND ----------
 
 # The name of the RAG application.  This is used to name the chain's UC model and prepended to the output Delta Tables + Vector Indexes
-RAG_APP_NAME = 'my_agent_app'
+RAG_APP_NAME = 'zg_hr_rag'
 
 # UC Catalog & Schema where outputs tables/indexs are saved
 # If this catalog/schema does not exist, you need create catalog/schema permissions.
-UC_CATALOG = f'{user_name}_catalog'
-UC_SCHEMA = f'rag_{user_name}'
+UC_CATALOG = f'zg'
+UC_SCHEMA = f'hr'
 
 ## UC Model name where the POC chain is logged
 UC_MODEL_NAME = f"{UC_CATALOG}.{UC_SCHEMA}.{RAG_APP_NAME}"
 
 # Vector Search endpoint where index is loaded
 # If this does not exist, it will be created
-VECTOR_SEARCH_ENDPOINT = f'{user_name}_vector_search'
+VECTOR_SEARCH_ENDPOINT = f'one-env-shared-endpoint-7'
 
 # Source location for documents
 # You need to create this location and add files
-SOURCE_PATH = f"/Volumes/{UC_CATALOG}/{UC_SCHEMA}/source_docs"
+SOURCE_PATH = f"/Volumes/{UC_CATALOG}/{UC_SCHEMA}/hr_docs"
 
 ############################
 ##### We suggest accepting these defaults unless you need to change them. ######
@@ -63,7 +63,7 @@ mlflow.set_experiment(MLFLOW_EXPERIMENT_NAME)
 # These Runs will store your initial POC application.  They are later used to evaluate the POC model against your experiments to improve quality.
 
 # Data pipeline MLflow run name
-POC_DATA_PIPELINE_RUN_NAME = "data_pipeline_poc"
+POC_DATA_PIPELINE_RUN_NAME = "zg_hr_data_pipeline_poc"
 # Chain MLflow run name
 POC_CHAIN_RUN_NAME = "poc"
 
